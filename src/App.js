@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 import ShopPage from './pages/shop/shop.component.jsx'
 import Header from './components/header/header-component.jsx'
 import SignInSignUp from '../src/pages/sign-in-sign-up/sign-in-sign-out.component.jsx'
-import { auth, createUserProfileDocument } from './firebase/firebase.util.js'
+import { auth, createUserProfileDocument } from './firebase/firebase.util';
 
 
 class App extends React.Component {
@@ -23,8 +23,6 @@ class App extends React.Component {
   componentDidMount() {
     this.unsusbscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
-
-        console.log('proslo provjeur')
 
         const userRef = await createUserProfileDocument(userAuth);
 
