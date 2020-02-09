@@ -14,6 +14,10 @@ class App extends React.Component {
 
   unsusbscribeFromAuth = null
 
+  add = item => {
+    return item + item
+  }
+
   componentDidMount() {
 
     const { setCurrentUser } = this.props;;
@@ -33,6 +37,7 @@ class App extends React.Component {
 
           console.log(this.state)
           console.log('aaa')
+          console.log(this.add(2))
         })
       }
       setCurrentUser(userAuth);
@@ -42,6 +47,8 @@ class App extends React.Component {
   //TODO dsajdsa
   componentWillUnmount() {
   }
+
+  
 
   render() {
     return (
@@ -53,11 +60,11 @@ class App extends React.Component {
           <Route
             exact
             path='/signin'
-            render={() => 
+            render={() =>
               this.props.currentUser ? (
-                <Redirect to='/'/>
-                ) : ( 
-                  <SignInSignUp/>
+                <Redirect to='/' />
+              ) : (
+                  <SignInSignUp />
                 )} />
         </Switch>
       </div>
