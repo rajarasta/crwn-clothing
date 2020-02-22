@@ -1,28 +1,20 @@
 import React from 'react';
-import SHOP_DATA from './shop.data';
-import CollectionPreview from '../../components/collection-preview/collection-preview.component'
+import { Route } from 'react-router-dom';
 
-class ShopPage extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            collections: SHOP_DATA
-        }
+import CollectionsOverview from '../../components/collection-overview/collections-overview.component'
+import CollectionPage from '../collection/collection.component';
 
-    }
 
-    render() {
-        const { collections } = this.state
-        return (
-            <div className='shop-page'> {
-                collections.map(({ id, ...otherCollectionProps }) => (
-                    <CollectionPreview key={id} {...otherCollectionProps}></CollectionPreview>
-                ))
-            }
-            </div>
-        )
-    }
-}
+
+const ShopPage = ({ match }) => {
+    return (
+        /*Ako je stavljen page u Route, kad se do njega dode automatski su passani propsi match, location, history.*/
+        <div className='shop-page'>
+            <Route exact path={`${match.path}`} component={CollectionsOverview} />
+            <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+        </div>
+    )
+};
 
 export default ShopPage;

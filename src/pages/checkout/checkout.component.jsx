@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';
 
+import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component'
+
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import CartItem from '../../components/cart-item/cart-item.component';
 
 
-const CheckoutPage = ({cartItems, total}) => (
+const CheckoutPage = ({ cartItems, total }) => (
     <div className='checkout-page'>
         <div className='checkout-header'>
             <div className='header-block'>
@@ -30,17 +32,25 @@ const CheckoutPage = ({cartItems, total}) => (
         </div>
         {
             cartItems.map(cartItem =>
-                <CheckoutItem key={CartItem.id} cartItem={cartItem}/>)
+                <CheckoutItem key={CartItem.id} cartItem={cartItem} />)
         }
 
         <div className='total'>
-        <span>TOTAL: ${total} </span>
+            <span>TOTAL: ${total} </span>
         </div>
+
+        <div className='test-warning'>
+            Please use the following test cart for payment
+        <br />
+            4242424242424242 blblblb
+        </div>
+
+        <StripeCheckoutButton price={total} />
 
     </div>
 )
 
-const mapStateToProps = createStructuredSelector ({
+const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems,
     total: selectCartTotal
 })
