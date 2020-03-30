@@ -6,7 +6,6 @@ import "./collection.styles.scss";
 
 import { connect } from "react-redux";
 import { selectCollection } from "../../redux/shop/shop.selectors";
-import { selectCartItems } from "../../redux/cart/cart.selectors";
 
 const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
